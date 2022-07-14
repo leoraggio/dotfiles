@@ -3,6 +3,12 @@ if not status_ok then
   return
 end
 
+local opts = { noremap = true, silent = true }
+
+vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', opts)
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opts)
+vim.api.nvim_set_keymap('n', 'd<Tab>', ':Bclose<CR>', opts)
+
 bufferline.setup {
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -17,8 +23,8 @@ bufferline.setup {
     buffer_close_icon = "",
     -- buffer_close_icon = '',
     modified_icon = "●",
-    close_icon = "",
-    -- close_icon = '',
+    -- close_icon = "",
+    close_icon = '',
     left_trunc_marker = "",
     right_trunc_marker = "",
     --- name_formatter can be used to change the buffer's label in the bufferline.
